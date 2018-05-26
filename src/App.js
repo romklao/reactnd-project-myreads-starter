@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import * as BooksAPI from './BooksAPI';
-import ListBooks from './ListBooks';
+import ListBooks from './Components/ListBooks';
 
-class BooksApp extends React.Component {
+class BooksApp extends Component {
   state = {
     /**
      * TODO: Instead of using this state variable to keep track of which page
@@ -14,11 +14,20 @@ class BooksApp extends React.Component {
     showSearchPage: false,
     books: []
   }
+
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
-      this.setState({ books })
-      console.log('books', this.state.books)
-    })
+      this.setState({ books: books })
+    });
+  }
+
+  doChangeShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(() => {
+      BooksAPI.getAll().then((books) => {
+        console.log('books', books)
+        this.setState({ books: books })
+      });
+    });
   }
 
   render() {
@@ -38,7 +47,6 @@ class BooksApp extends React.Component {
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
                 <input type="text" placeholder="Search by title or author"/>
-
               </div>
             </div>
             <div className="search-books-results">
@@ -47,11 +55,9 @@ class BooksApp extends React.Component {
           </div>
         ) : (
           <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
             <ListBooks
-                books={this.state.books}
+              books={ this.state.books }
+              changeShelf={ this.doChangeShelf }
             />
             <div className="open-search">
               <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
