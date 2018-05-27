@@ -13,7 +13,7 @@ class SearchBooks extends Component {
   }
 
   onSearchBooks = (query) => {
-    this.setState({ query: query.trim() })
+    this.setState({ query: query })
     this.props.searchBookResults(query);
   }
 
