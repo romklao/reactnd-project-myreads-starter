@@ -237,9 +237,9 @@ body, .app {
 .close-modal {
   margin: 10px;
   float: right;
-  font-size: 18px;
+  font-size: 17px;
   background: none;
-  padding: 5px 8px;
+  padding: 4px 7px;
   border-radius: 3px;
   color: grey;
 }
