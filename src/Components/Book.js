@@ -23,17 +23,20 @@ class Book extends Component {
     }
   }
 
+  showBookDetailsModal = () => {
+    this.setState({ showBookDetailsModal: true })
+  }
+
   render() {
     const { book } = this.props;
-    console.log('this.props', this.props)
     let currentShelf = book.shelf;
     let bookCover = book.imageLinks;
 
-    if(currentShelf === undefined) {
+    if (currentShelf === undefined) {
       currentShelf = 'none';
     }
 
-    if(bookCover === undefined) {
+    if (bookCover === undefined) {
       bookCover = 'none';
     }
 
@@ -49,7 +52,7 @@ class Book extends Component {
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193,
                 backgroundImage: `url(${bookCover.smallThumbnail})` }}
-                onClick={() => this.setState({ showBookDetailsModal: true })}>
+                onClick={() => this.showBookDetailsModal()}>
               </div>
               <div className="book-shelf-changer">
                 <select onChange={this.onChangeBookShelf} value={ currentShelf }>
