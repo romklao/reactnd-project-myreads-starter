@@ -36,6 +36,18 @@ class BooksApp extends Component {
     this.setState({ showSearchPage: false })
   }
 
+  doSearchBooks = (query) => {
+    BooksAPI.search(query)
+    .then((results) => {
+      console.log('results', results)
+      if (results === undefined || results.error !== undefined) {
+        this.setState({ searchResults: [] })
+      } else {
+        this.setState({ searchResults: results })
+      }
+    })
+  }
+
   render() {
     return (
       <div className="app">
@@ -44,6 +56,7 @@ class BooksApp extends Component {
             searchResults={ this.state.searchResults }
             hideSearchPage={ this.doHideSearchPage }
             searchBookResults={ this.doSearchBooks }
+            changeShelf={ this.doChangeShelf }
           />
         ) : (
           <div className="list-books">
