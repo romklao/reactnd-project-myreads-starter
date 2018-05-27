@@ -18,6 +18,10 @@ class BooksApp extends Component {
   }
 
   componentDidMount() {
+    this.fetchBooksDetails();
+  }
+
+  fetchBooksDetails = () => {
     BooksAPI.getAll().then((books) => {
       this.setState({ books: books })
     });
@@ -25,10 +29,7 @@ class BooksApp extends Component {
 
   doChangeShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
-      BooksAPI.getAll().then((books) => {
-        console.log('books', books)
-        this.setState({ books: books })
-      });
+      this.fetchBooksDetails();
     });
   }
 
