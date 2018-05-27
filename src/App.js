@@ -3,6 +3,7 @@ import './App.css';
 import * as BooksAPI from './BooksAPI';
 import ListBooks from './Components/ListBooks';
 import SearchBooks from './Components/SearchBooks';
+import { Route } from 'react-router-dom';
 
 class BooksApp extends Component {
   state = {
@@ -12,7 +13,6 @@ class BooksApp extends Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false,
     books: [],
     searchResults: []
   }
@@ -32,10 +32,6 @@ class BooksApp extends Component {
     });
   }
 
-  doHideSearchPage = () => {
-    this.setState({ showSearchPage: false })
-  }
-
   doSearchBooks = (query) => {
     BooksAPI.search(query)
     .then((results) => {
@@ -51,27 +47,23 @@ class BooksApp extends Component {
   render() {
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
+        <Route exact path='/' render={() => (
+          <ListBooks
+            books={ this.state.books }
+            changeShelf={ this.doChangeShelf }
+            allowSearchPage={ this.doShowSearchPage }
+          />
+        )}/>
+        <Route path='/search' render={({ history }) => (
           <SearchBooks
             searchResults={ this.state.searchResults }
-            hideSearchPage={ this.doHideSearchPage }
-            searchBookResults={ this.doSearchBooks }
+            searchBooks={ this.doSearchBooks }
             changeShelf={ this.doChangeShelf }
           />
-        ) : (
-          <div className="list-books">
-            <ListBooks
-              books={ this.state.books }
-              changeShelf={ this.doChangeShelf }
-            />
-            <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-            </div>
-          </div>
-        )}
+        )}/>
       </div>
     )
   }
 }
 
-export default BooksApp
+export default BooksApp;
