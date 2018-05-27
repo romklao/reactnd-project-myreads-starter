@@ -45,7 +45,17 @@ class SearchBooks extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-
+            {searchResults.length > 0 ? (
+              searchResults.map((searchResult, index) => (
+              <Book
+                book={ searchResult }
+                key={ index }
+                changeShelf={ this.props.changeShelf }
+              />
+              ))
+            ) : (
+              <div className="no-results"><h1>No Results!</h1></div>
+            )}
           </ol>
         </div>
       </div>
