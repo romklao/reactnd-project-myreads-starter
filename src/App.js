@@ -13,7 +13,8 @@ class BooksApp extends Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false,
-    books: []
+    books: [],
+    searchResults: []
   }
 
   componentDidMount() {
@@ -40,7 +41,9 @@ class BooksApp extends Component {
       <div className="app">
         {this.state.showSearchPage ? (
           <SearchBooks
+            searchResults={ this.state.searchResults }
             hideSearchPage={ this.doHideSearchPage }
+            searchBookResults={ this.doSearchBooks }
           />
         ) : (
           <div className="list-books">
