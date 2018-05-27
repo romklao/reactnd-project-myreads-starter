@@ -10,6 +10,7 @@ class BookDetailsModal extends Component {
   render() {
 
     const { book, hideModal } = this.props;
+    let bookCategories = book.categories.toString().charAt(0).toUpperCase() + book.categories.toString().slice(1).toLowerCase()
 
     return (
       <div>
@@ -20,7 +21,7 @@ class BookDetailsModal extends Component {
             <ul className="book-details">
               <li>Title: <span className="grey-text">{ book.title ? book.title : '' }</span></li>
               <li>Author: <span className="grey-text">{ book.authors ? book.authors[0] : '' }</span></li>
-              <li>Category: <span className="grey-text">{ book.categories ? book.categories : '' }</span></li>
+              <li>Category: <span className="grey-text">{ book.categories ? bookCategories : '' }</span></li>
               <li>Page Count: <span className="grey-text">{ book.pageCount ? book.pageCount : '' }</span></li>
             </ul>
             <p className="book-description">{ book.description ? 'DESCRIPTION' : '' }</p>
