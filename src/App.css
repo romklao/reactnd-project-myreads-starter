@@ -248,5 +248,11 @@ body, .app {
   cursor: pointer;
 }
 
+/* no results page */
+
+.no-results {
+  margin: 200px;
+}
+
 
 
