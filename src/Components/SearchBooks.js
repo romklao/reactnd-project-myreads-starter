@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import Book from './Book';
+import { Link } from 'react-router-dom';
 
 class SearchBooks extends Component {
-
-  static propTypes = {
-    hideSearchPage: PropTypes.func.isRequired
-  }
 
   state = {
     query: ''
@@ -14,18 +10,22 @@ class SearchBooks extends Component {
 
   onSearchBooks = (query) => {
     this.setState({ query: query })
-    this.props.searchBookResults(query);
+    this.props.searchBooks(query);
   }
 
   render() {
 
-    const { searchResults, hideSearchPage } = this.props;
+    const { searchResults } = this.props;
     const { query } = this.state;
 
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <a className="close-search" onClick={() => hideSearchPage()}>Close</a>
+          <Link
+            to='/'
+            className="close-search"
+            >Close
+          </Link>
           <div className="search-books-input-wrapper">
             {/*
               NOTES: The search from BooksAPI is limited to a particular set of search terms.
