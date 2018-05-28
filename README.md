@@ -7,7 +7,7 @@ This project was created to display books in each category. The application allo
 
 ## How to Run:
 
-1. [Clone](https://github.com/romklao/reactnd-project-myreads-starter.git) the Repository.
+1. [Clone]https://github.com/romklao/reactnd-project-myreads-starter.git the Repository.
 2. Run `npm install` to install the project dependencies.
 3. Run the app using `npm start`.
 4. App can be seen at: `localhost:3000`.
