@@ -10,7 +10,7 @@ class SearchBooks extends Component {
   }
 
   onSearchBooks = (query) => {
-    this.setState({ query: query })
+    this.setState({ query })
     this.props.searchBooks(query)
   }
 
