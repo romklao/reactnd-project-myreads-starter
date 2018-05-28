@@ -5,6 +5,7 @@ import ListBooks from './Components/ListBooks';
 import SearchBooks from './Components/SearchBooks';
 import { Route } from 'react-router-dom';
 
+/* TODO: Render all pages in the app */
 class BooksApp extends Component {
   state = {
     /**
@@ -16,23 +17,27 @@ class BooksApp extends Component {
     books: [],
     searchResults: []
   }
-
+  /* This method is called once all children Elements and
+   * Component instances are mounted onto the Native UI.
+  */
   componentDidMount() {
     this.fetchBooksDetails();
   }
-
+  /* TODO: Fetch books details from BOOKS API */
   fetchBooksDetails = () => {
     BooksAPI.getAll().then((books) => {
       this.setState({ books: books })
     });
   }
-
+  /* TODO: Update shelf when a user chooses or changes a shelf
+   * and then fetch all books in the list books
+  */
   doChangeShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
       this.fetchBooksDetails();
     });
   }
-
+  /* TODO: Show books that is matched to a query when a user searches for books */
   doSearchBooks = (query) => {
     BooksAPI.search(query)
     .then((results) => {

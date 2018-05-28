@@ -3,6 +3,7 @@ import BookShelf from './BookShelf';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+/* TODO: Show the categorized list book */
 class ListBooks extends Component {
 
   static propTypes = {
@@ -12,7 +13,7 @@ class ListBooks extends Component {
 
   render() {
     const { books } = this.props;
-
+    /* Use filter to categorize the shelves and present all books in each shelf */
     return (
       <div className="list-books">
         <div className="list-books-title">

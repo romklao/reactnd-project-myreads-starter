@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
 
+/* TODO: This renders all books in a shelf */
 class BookShelf extends Component {
 
   static propTypes = {
@@ -12,7 +13,7 @@ class BookShelf extends Component {
 
   render() {
     const { books } = this.props;
-
+    /* Loop through a shelf to present all books in it */
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{ this.props.title }</h2>

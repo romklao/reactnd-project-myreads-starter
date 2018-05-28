@@ -2,27 +2,31 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import BookDetailsModal from './BookDetailsModal';
 
+/* TODO: This shows a book's details when BOOKS API is fetch to get books in the list
+ * or is fetch to search for books
+*/
 class Book extends Component {
+
   static propTypes = {
     book: PropTypes.object.isRequired,
     changeShelf: PropTypes.func.isRequired
   }
-
+  /* Set the state for a book's details modal */
   state = {
     showBookDetailsModal: false
   }
-
+  /* TODO: Change a book shelf when a user chooses or changes a book shelf */
   onChangeBookShelf = (e) => {
     const { book } = this.props;
     this.props.changeShelf(book, e.target.value);
   }
-
+  /* TODO: Set a book's details modal state to false when wanting to hide the modal */
   hideBookDetailsModal = () => {
     if (this.state.showBookDetailsModal === true) {
       this.setState({ showBookDetailsModal: false })
     }
   }
-
+  /* TODO: Set a book's details modal state to true when wanting to show the modal */
   showBookDetailsModal = () => {
     this.setState({ showBookDetailsModal: true })
   }
@@ -41,6 +45,9 @@ class Book extends Component {
     }
 
     return (
+    /* Show a modal,an extra book's details, when the showBookDetailsModal is true
+     * Otherwise show a book's cover, title and author
+    */
       <li>
         {this.state.showBookDetailsModal === true ? (
           <BookDetailsModal
@@ -52,9 +59,15 @@ class Book extends Component {
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193,
                 backgroundImage: `url(${bookCover.smallThumbnail})` }}
+                /*
+                  Click to allow the modal popup
+                */
                 onClick={() => this.showBookDetailsModal()}>
               </div>
               <div className="book-shelf-changer">
+                {/*
+                  Get a book shelf when a user changes the shelf
+                */}
                 <select onChange={this.onChangeBookShelf} value={ currentShelf }>
                   <option value="none" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>

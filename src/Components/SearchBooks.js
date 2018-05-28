@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Book from './Book';
 import { Link } from 'react-router-dom';
 
+/* TODO: Search for books from BOOKS API */
 class SearchBooks extends Component {
 
   state = {
@@ -44,6 +45,7 @@ class SearchBooks extends Component {
           </div>
         </div>
         <div className="search-books-results">
+          {/* Display all search results if the API return datas otherwise show no results */}
           <ol className="books-grid">
             {searchResults.length > 0 ? (
               searchResults.map((searchResult, index) => (
