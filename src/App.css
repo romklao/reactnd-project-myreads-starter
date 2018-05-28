@@ -30,6 +30,25 @@ body, .app {
   padding: 0 10px 20px;
 }
 
+
+@media (max-width: 600px) {
+  .modal {
+    height: 700px;
+  }
+
+  .modal-guts {
+    position: absolute;
+    top: 6%;
+    left: 0;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 1%;
+    right: 2%;
+  }
+}
+
 @media (min-width: 600px) {
   .bookshelf {
     padding: 0 20px 40px;
