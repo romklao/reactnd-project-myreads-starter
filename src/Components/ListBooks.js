@@ -13,6 +13,13 @@ class ListBooks extends Component {
 
   render() {
     const { books } = this.props;
+    let bookShelvesNames = ['currentlyReading', 'read', 'wantToRead']
+    let titleNames = {
+      currentlyReading: 'Currently Reading',
+      read: 'Read',
+      wantToRead: 'Want to Read'
+    }
+
     /* Use filter to categorize the shelves and present all books in each shelf */
     return (
       <div className="list-books">
@@ -20,21 +27,13 @@ class ListBooks extends Component {
           <h1>MyReads</h1>
         </div>
         <div className="list-books-content">
-          <BookShelf
-            books={books.filter((book) => (book.shelf === 'currentlyReading'))}
-            title="Currently Reading"
-            changeShelf={this.props.changeShelf}
-          />
-          <BookShelf
-            books={books.filter((book) => (book.shelf === 'read'))}
-            title="Read"
-            changeShelf={this.props.changeShelf}
-          />
-          <BookShelf
-            books={books.filter((book) => (book.shelf === 'wantToRead'))}
-            title="Want to Read"
-            changeShelf={this.props.changeShelf}
-          />
+          {bookShelvesNames.map((bookShelf) => (
+            <BookShelf
+              books={books.filter((book) => (book.shelf === bookShelf))}
+              title={titleNames[bookShelf]}
+              changeShelf={this.props.changeShelf}
+            />
+          ))}
         </div>
         <div className="open-search">
           <Link
