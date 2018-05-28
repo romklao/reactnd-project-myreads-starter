@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import BookShelf from './BookShelf';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import BookShelf from './BookShelf'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 /* TODO: Show the categorized list book */
 class ListBooks extends Component {
@@ -27,11 +27,12 @@ class ListBooks extends Component {
           <h1>MyReads</h1>
         </div>
         <div className="list-books-content">
-          {bookShelvesNames.map((bookShelf) => (
+          {bookShelvesNames.map((bookShelf, index) => (
             <BookShelf
               books={books.filter((book) => (book.shelf === bookShelf))}
-              title={titleNames[bookShelf]}
-              changeShelf={this.props.changeShelf}
+              key={ index }
+              title={ titleNames[bookShelf] }
+              changeShelf={ this.props.changeShelf }
             />
           ))}
         </div>
@@ -46,4 +47,4 @@ class ListBooks extends Component {
   }
 }
 
-export default ListBooks;
+export default ListBooks

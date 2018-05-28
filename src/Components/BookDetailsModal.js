@@ -1,5 +1,5 @@
-import React, { Component} from 'react';
-import PropTypes from 'prop-types';
+import React, { Component} from 'react'
+import PropTypes from 'prop-types'
 
 /* TODO: This class renders the extra book details when its book cover is clicked */
 class BookDetailsModal extends Component {
@@ -10,7 +10,7 @@ class BookDetailsModal extends Component {
 
   render() {
     /* Declare variables to props */
-    const { book, hideModal } = this.props;
+    const { book, hideModal } = this.props
 
     let bookCategories = book.categories.toString().charAt(0).toUpperCase() + book.categories.toString().slice(1).toLowerCase()
 
@@ -36,5 +36,5 @@ class BookDetailsModal extends Component {
   }
 }
 
-export default BookDetailsModal;
+export default BookDetailsModal
 

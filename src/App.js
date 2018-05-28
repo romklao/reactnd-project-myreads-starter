@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import * as BooksAPI from './BooksAPI';
-import ListBooks from './Components/ListBooks';
-import SearchBooks from './Components/SearchBooks';
-import { Route } from 'react-router-dom';
-import './App.css';
+import React, { Component } from 'react'
+import ListBooks from './Components/ListBooks'
+import SearchBooks from './Components/SearchBooks'
+import { Route } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
+import './App.css'
 
 /* TODO: Render all pages in the app */
 class BooksApp extends Component {
@@ -21,7 +21,7 @@ class BooksApp extends Component {
    * Component instances are mounted onto the Native UI.
   */
   componentDidMount() {
-    this.fetchBooksDetails();
+    this.fetchBooksDetails()
   }
   /* TODO: Fetch books details from BOOKS API */
   fetchBooksDetails = () => {
@@ -46,13 +46,12 @@ class BooksApp extends Component {
   /* TODO: Show books that is matched to a query when a user searches for books */
   doSearchBooks = (query) => {
     BooksAPI.search(query).then((results) => {
-      console.log('results', results)
       if (results === undefined || results.error !== undefined) {
         this.setState({ searchResults: [] })
       } else {
         this.setState({ searchResults: results })
       }
-    });
+    })
   }
 
   render() {

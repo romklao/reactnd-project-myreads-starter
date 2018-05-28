@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Book from './Book';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import Book from './Book'
 
 /* TODO: Search for books from BOOKS API */
 class SearchBooks extends Component {
@@ -11,13 +11,13 @@ class SearchBooks extends Component {
 
   onSearchBooks = (query) => {
     this.setState({ query: query })
-    this.props.searchBooks(query);
+    this.props.searchBooks(query)
   }
 
   render() {
 
-    const { searchResults } = this.props;
-    const { query } = this.state;
+    const { searchResults } = this.props
+    const { query } = this.state
 
     return (
       <div className="search-books">
@@ -65,4 +65,4 @@ class SearchBooks extends Component {
   }
 }
 
-export default SearchBooks;
+export default SearchBooks
