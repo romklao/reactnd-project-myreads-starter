@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Book from './Book'
 
 /* TODO: This renders all books in a shelf */
@@ -22,6 +23,10 @@ function BookShelf(props) {
       </div>
     </div>
   )
+}
+
+BookShelf.propTypes = {
+  title: PropTypes.string.isRequired
 }
 
 export default BookShelf
