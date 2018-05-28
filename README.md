@@ -1,6 +1,6 @@
 # MyReads Project
 
-This project was created to display books in each category. The application allows a user to search for books. Futhermore, it lets a user to change or to select books to categorize as read, currently reading, or want to read. The project emphasizes using React to build the application and provides a BOOKS API server and client library that assistance a user to interact and to get benefit from applying the app.
+This project was created to display books in each category. The application allows a user to search for books. Futhermore, it lets a user to change or to select books to categorize as read, currently reading, or want to read. The project emphasizes using React to build the application and provides a BOOKS API server and client library that assist a user to interact and to get benefit from applying the app.
 
 ## Requirements
 * npm
