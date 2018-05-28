@@ -39,15 +39,14 @@ class BooksApp extends Component {
   }
   /* TODO: Show books that is matched to a query when a user searches for books */
   doSearchBooks = (query) => {
-    BooksAPI.search(query)
-    .then((results) => {
+    BooksAPI.search(query).then((results) => {
       console.log('results', results)
       if (results === undefined || results.error !== undefined) {
         this.setState({ searchResults: [] })
       } else {
         this.setState({ searchResults: results })
       }
-    })
+    });
   }
 
   render() {
