@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import BookDetailsModal from './BookDetailsModal';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import BookDetailsModal from './BookDetailsModal'
 
 /* TODO: This shows a book's details when BOOKS API is fetch to get books in the list
  * or is fetch to search for books
@@ -18,7 +18,7 @@ class Book extends Component {
   /* TODO: Change a book shelf when a user chooses or changes a book shelf */
   onChangeBookShelf = (e) => {
     const { book } = this.props;
-    this.props.changeShelf(book, e.target.value);
+    this.props.changeShelf(book, e.target.value)
   }
   /* TODO: Set a book's details modal state to false when wanting to hide the modal */
   hideBookDetailsModal = () => {
@@ -32,9 +32,9 @@ class Book extends Component {
   }
 
   render() {
-    const { book } = this.props;
-    let currentShelf = book.shelf;
-    let bookCover = book.imageLinks;
+    const { book } = this.props
+    let currentShelf = book.shelf
+    let bookCover = book.imageLinks
 
     if (currentShelf === undefined) {
       currentShelf = 'none';
@@ -69,7 +69,7 @@ class Book extends Component {
                   Get a book shelf when a user changes the shelf
                 */}
                 <select onChange={this.onChangeBookShelf} value={ currentShelf }>
-                  <option value="none" disabled>Move to...</option>
+                  <option value="moveTo" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
                   <option value="read">Read</option>
@@ -86,6 +86,6 @@ class Book extends Component {
   }
 }
 
-export default Book;
+export default Book
 
 
