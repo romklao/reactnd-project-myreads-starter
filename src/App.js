@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import * as BooksAPI from './BooksAPI';
 import ListBooks from './Components/ListBooks';
 import SearchBooks from './Components/SearchBooks';
 import { Route } from 'react-router-dom';
+import './App.css';
 
 /* TODO: Render all pages in the app */
 class BooksApp extends Component {
@@ -26,16 +26,22 @@ class BooksApp extends Component {
   /* TODO: Fetch books details from BOOKS API */
   fetchBooksDetails = () => {
     BooksAPI.getAll().then((books) => {
-      this.setState({ books: books })
+      this.setState({ books })
     });
   }
-  /* TODO: Update shelf when a user chooses or changes a shelf
-   * and then fetch all books in the list books
+  /* TODO: Update shelf when a user selects or changes to a difference shelf
+   * When a book is moved from one shelf to another we need
+   * to update the local state of the book after we make an update API call
+   * When a new book(not on shelf) is added from search page
+   * we need to concat the new book to the existing books state after you make an update API call
   */
-  doChangeShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf).then(() => {
-      this.fetchBooksDetails();
-    });
+  doChangeShelf = (book, value) => {
+    BooksAPI.update(book, value).then(() => {
+      book.shelf = value
+      this.setState(state => ({
+        books: state.books.filter(b => b.id !== book.id).concat(book)
+      }))
+    })
   }
   /* TODO: Show books that is matched to a query when a user searches for books */
   doSearchBooks = (query) => {
