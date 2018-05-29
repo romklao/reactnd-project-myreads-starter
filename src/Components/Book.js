@@ -38,8 +38,10 @@ class Book extends Component {
     let bookCover = book.imageLinks
 
     /* Loop through books in the main page to find
-     * weather they have the same id as books in the search page
-     * if they are, set their current shelves to books on the search page
+     * weather they have the same id as books in the search page.
+     * If they are, set their current shelves to books on the search page
+     * so their books shelves are shown whenever the books appear on the search page
+     * If their books id are not the same, set the books shelves on the search page  to none.
      */
     books.forEach((item) => {
       if (item.id === book.id) {
