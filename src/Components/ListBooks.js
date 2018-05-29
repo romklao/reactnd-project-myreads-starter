@@ -5,13 +5,12 @@ import { Link } from 'react-router-dom'
 /* TODO: Show the categorized list book */
 function ListBooks(props) {
 
-  const { books } = props;
-  const bookShelvesNames = ['currentlyReading', 'read', 'wantToRead']
-  const titleNames = {
-    currentlyReading: 'Currently Reading',
-    read: 'Read',
-    wantToRead: 'Want to Read'
-  }
+  const { books, changeShelf } = props;
+  let bookShelvesNames = [
+    {type: 'currentlyReading', title: 'Currently Reading'},
+    {type: 'read', title: 'Read'},
+    {type: 'wantToRead', title: 'Want to Read'}
+  ]
 
   /* Use filter to categorize the shelves and present all books in each shelf */
   return (
@@ -22,10 +21,10 @@ function ListBooks(props) {
       <div className="list-books-content">
         {bookShelvesNames.map((bookShelf, index) => (
           <BookShelf
-            books={books.filter((book) => (book.shelf === bookShelf))}
+            books={books.filter((book) => (book.shelf === bookShelf.type))}
             key={ index }
-            title={ titleNames[bookShelf] }
-            changeShelf={ props.changeShelf }
+            title={ bookShelf.title }
+            changeShelf={ changeShelf }
           />
         ))}
       </div>
