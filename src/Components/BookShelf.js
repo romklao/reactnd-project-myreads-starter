@@ -5,7 +5,7 @@ import Book from './Book'
 /* TODO: This renders all books in a shelf */
 function BookShelf(props) {
 
-  const { books } = props
+  const { books, changeShelf } = props
     /* Loop through a shelf to present all books in it */
   return (
     <div className="bookshelf">
@@ -15,8 +15,9 @@ function BookShelf(props) {
           {books.map((book, index) => (
             <Book
               book={ book }
+              books={ books }
               key={ index }
-              changeShelf={ props.changeShelf }
+              changeShelf={ changeShelf }
             />
           ))}
         </ol>
@@ -26,6 +27,7 @@ function BookShelf(props) {
 }
 
 BookShelf.propTypes = {
+  books: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired
 }
 
