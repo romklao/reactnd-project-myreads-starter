@@ -4,7 +4,7 @@ import BookDetailsModal from './BookDetailsModal'
 
 /* TODO: This shows a book's details when BOOKS API is fetch to get books in the list
  * or is fetch to search for books
-*/
+ */
 class Book extends Component {
 
   static propTypes = {
@@ -37,13 +37,17 @@ class Book extends Component {
     let currentShelf = 'none'
     let bookCover = book.imageLinks
 
-    for (let item of books) {
+    /* Loop through books in the main page to find
+     * weather they have the same id as books in the search page
+     * if they are, set their current shelves to books on the search page
+     */
+    books.forEach((item) => {
       if (item.id === book.id) {
         currentShelf = item.shelf
-        break
       }
-    }
+    })
 
+    /* Set book cover to none if it is undefined */
     if (bookCover === undefined) {
       bookCover = 'none'
     }
@@ -51,7 +55,7 @@ class Book extends Component {
     return (
     /* Show a modal,an extra book's details, when the showBookDetailsModal is true
      * Otherwise show a book's cover, title and author
-    */
+     */
       <li>
         {this.state.showBookDetailsModal === true ? (
           <BookDetailsModal
