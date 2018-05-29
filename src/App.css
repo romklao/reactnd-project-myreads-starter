@@ -30,19 +30,6 @@ body, .app {
   padding: 0 10px 20px;
 }
 
-
-@media (max-width: 600px) {
-  .modal {
-    height: 600px;
-  }
-}
-
-@media (min-width: 600px) {
-  .bookshelf {
-    padding: 0 20px 40px;
-  }
-}
-
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
 }
@@ -190,7 +177,7 @@ body, .app {
   /* Probably need media queries here */
   width: 700px;
   max-width: 100%;
-  height: 500px;
+  height: 700px;
   max-height: 100%;
   position: fixed;
   z-index: 100;
@@ -203,7 +190,7 @@ body, .app {
   /* margin: -200px 0 0 -200px; */
 
   background: white;
-  box-shadow: 0 0 40px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 40px 0px rgba(0, 0, 0, 0.7);
 }
 
 .modal-overlay {
@@ -213,7 +200,7 @@ body, .app {
   width: 100%;
   height: 100%;
   z-index: 50;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .modal-guts {
@@ -263,6 +250,14 @@ body, .app {
 
 .no-results {
   margin: 200px;
+}
+
+/* media */
+
+@media (min-width: 600px) {
+  .bookshelf {
+    padding: 0 20px 40px;
+  }
 }
 
 
