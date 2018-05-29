@@ -18,7 +18,7 @@ class BooksApp extends Component {
   }
   /* This method is called once all children Elements and
    * Component instances are mounted onto the Native UI.
-  */
+   */
   componentDidMount() {
     this.fetchBooksDetails()
   }
@@ -33,7 +33,7 @@ class BooksApp extends Component {
    * to update the local state of the book after we make an update API call
    * When a new book(not on shelf) is added from search page
    * we need to concat the new book to the existing books state after you make an update API call
-  */
+   */
   doChangeShelf = (book, value) => {
     BooksAPI.update(book, value).then(() => {
       book.shelf = value

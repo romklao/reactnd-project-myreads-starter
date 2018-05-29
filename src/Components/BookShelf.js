@@ -6,7 +6,7 @@ import Book from './Book'
 function BookShelf(props) {
 
   const { books, changeShelf } = props
-    /* Loop through a shelf to present all books in it */
+  /* Loop through a shelf to present all books in it */
   return (
     <div className="bookshelf">
       <h2 className="bookshelf-title">{ props.title }</h2>
