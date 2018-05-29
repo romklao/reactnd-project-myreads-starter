@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import ListBooks from './Components/ListBooks'
 import SearchBooks from './Components/SearchBooks'
-import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
@@ -56,22 +56,24 @@ class BooksApp extends Component {
 
   render() {
     return (
-      <div className="app">
-        <Route exact path='/' render={() => (
-          <ListBooks
-            books={ this.state.books }
-            changeShelf={ this.doChangeShelf }
-            allowSearchPage={ this.doShowSearchPage }
-          />
-        )}/>
-        <Route path='/search' render={({ history }) => (
-          <SearchBooks
-            searchResults={ this.state.searchResults }
-            searchBooks={ this.doSearchBooks }
-            changeShelf={ this.doChangeShelf }
-          />
-        )}/>
-      </div>
+      <Router>
+        <div className="app">
+          <Route exact path='/' render={() => (
+            <ListBooks
+              books={ this.state.books }
+              changeShelf={ this.doChangeShelf }
+              allowSearchPage={ this.doShowSearchPage }
+            />
+          )}/>
+          <Route path='/search' render={({ history }) => (
+            <SearchBooks
+              searchResults={ this.state.searchResults }
+              searchBooks={ this.doSearchBooks }
+              changeShelf={ this.doChangeShelf }
+            />
+          )}/>
+        </div>
+      </Router>
     )
   }
 }
