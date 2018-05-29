@@ -9,13 +9,14 @@ class Book extends Component {
 
   static propTypes = {
     book: PropTypes.object.isRequired,
+    books: PropTypes.array.isRequired,
     changeShelf: PropTypes.func.isRequired
   }
   /* Set the state for a book's details modal */
   state = {
     showBookDetailsModal: false
   }
-  /* TODO: Change a book shelf when a user chooses or changes a book shelf */
+  /* TODO: Change a book shelf when a user selects or changes a book shelf */
   onChangeBookShelf = (e) => {
     const { book } = this.props;
     this.props.changeShelf(book, e.target.value)
@@ -32,16 +33,19 @@ class Book extends Component {
   }
 
   render() {
-    const { book } = this.props
-    let currentShelf = book.shelf
+    const { book, books } = this.props
+    let currentShelf = 'none'
     let bookCover = book.imageLinks
 
-    if (currentShelf === undefined) {
-      currentShelf = 'none';
+    for (let item of books) {
+      if (item.id === book.id) {
+        currentShelf = item.shelf
+        break
+      }
     }
 
     if (bookCover === undefined) {
-      bookCover = 'none';
+      bookCover = 'none'
     }
 
     return (
