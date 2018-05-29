@@ -15,7 +15,6 @@ class BooksApp extends Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     books: [],
-    searchResults: []
   }
   /* This method is called once all children Elements and
    * Component instances are mounted onto the Native UI.
@@ -43,16 +42,6 @@ class BooksApp extends Component {
       }))
     })
   }
-  /* TODO: Show books that is matched to a query when a user searches for books */
-  doSearchBooks = (query) => {
-    BooksAPI.search(query).then((results) => {
-      if (results === undefined || results.error !== undefined) {
-        this.setState({ searchResults: [] })
-      } else {
-        this.setState({ searchResults: results })
-      }
-    })
-  }
 
   render() {
     return (
@@ -67,9 +56,8 @@ class BooksApp extends Component {
           )}/>
           <Route path='/search' render={({ history }) => (
             <SearchBooks
-              searchResults={ this.state.searchResults }
-              searchBooks={ this.doSearchBooks }
               changeShelf={ this.doChangeShelf }
+              books={ this.state.books }
             />
           )}/>
         </div>
