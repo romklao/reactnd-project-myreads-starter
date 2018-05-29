@@ -2,28 +2,42 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Book from './Book'
+import * as BooksAPI from '../BooksAPI'
 
 /* TODO: Search for books from BOOKS API */
 class SearchBooks extends Component {
 
   static propTypes = {
-    searchBooks: PropTypes.func.isRequired,
-    searchResults: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    changeShelf: PropTypes.func.isRequired
   }
 
   state = {
-    query: ''
+    query: '',
+    searchBookResults: []
   }
 
-  onSearchBooks = (query) => {
+  onSearchBooks = (e) => {
+    const query = e.target.value.trim()
     this.setState({ query })
-    this.props.searchBooks(query)
+
+    if (query) {
+      BooksAPI.search(query).then((searchBookResults) => {
+        if (searchBookResults === undefined || searchBookResults.error !== undefined) {
+          this.setState({ searchBookResults: [] })
+        } else {
+          this.setState({ searchBookResults })
+        }
+      })
+    } else {
+        this.setState({ searchBookResults: [] })
+    }
   }
 
   render() {
 
-    const { searchResults } = this.props
-    const { query } = this.state
+    const { searchBookResults, query } = this.state
+    const { books, changeShelf } = this.props
 
     return (
       <div className="search-books">
@@ -46,19 +60,20 @@ class SearchBooks extends Component {
               type="text"
               placeholder="Search by title or author"
               value={ query }
-              onChange={(e) => this.onSearchBooks(e.target.value)}
+              onChange={this.onSearchBooks}
             />
           </div>
         </div>
         <div className="search-books-results">
           {/* Display all search results if the API return datas otherwise show no results */}
           <ol className="books-grid">
-            {searchResults.length > 0 ? (
-              searchResults.map((searchResult, index) => (
+            {searchBookResults.length > 0 ? (
+              searchBookResults.map((book, index) => (
               <Book
-                book={ searchResult }
+                book={ book }
+                books={ books }
                 key={ index }
-                changeShelf={ this.props.changeShelf }
+                changeShelf={ changeShelf }
               />
               ))
             ) : (
