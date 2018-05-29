@@ -21,13 +21,13 @@ class Book extends Component {
     this.props.changeShelf(book, e.target.value)
   }
   /* TODO: Set a book's details modal state to false when wanting to hide the modal */
-  hideBookDetailsModal = () => {
+  hideBookDetails = () => {
     if (this.state.showBookDetailsModal === true) {
       this.setState({ showBookDetailsModal: false })
     }
   }
   /* TODO: Set a book's details modal state to true when wanting to show the modal */
-  showBookDetailsModal = () => {
+  showBookDetails = () => {
     this.setState({ showBookDetailsModal: true })
   }
 
@@ -52,17 +52,14 @@ class Book extends Component {
         {this.state.showBookDetailsModal === true ? (
           <BookDetailsModal
             book={ book }
-            hideModal={ this.hideBookDetailsModal }
+            hideModal={ this.hideBookDetails }
           />
         ) : (
           <div className="book">
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193,
                 backgroundImage: `url(${bookCover.smallThumbnail})` }}
-                /*
-                  Click to allow the modal popup
-                */
-                onClick={() => this.showBookDetailsModal()}>
+                onClick={() => this.showBookDetails()}>
               </div>
               <div className="book-shelf-changer">
                 {/*
