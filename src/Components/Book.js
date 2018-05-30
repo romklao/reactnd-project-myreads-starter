@@ -9,7 +9,7 @@ class Book extends Component {
 
   static propTypes = {
     book: PropTypes.object.isRequired,
-    books: PropTypes.array.isRequired,
+    // books: PropTypes.array.isRequired,
     changeShelf: PropTypes.func.isRequired
   }
   /* Set the state for a book's details modal */
@@ -33,21 +33,9 @@ class Book extends Component {
   }
 
   render() {
-    const { book, books } = this.props
-    let currentShelf = 'none'
+    const { book, shelf } = this.props
+    let currentShelf = shelf ? shelf : 'none'
     let bookCover = book.imageLinks
-
-    /* Loop through books in the main page to find
-     * weather they have the same id as books in the search page.
-     * If they are, set their current shelves to books on the search page
-     * so their books shelves are shown whenever the books appear on the search page
-     * If their books id are not the same, set the books shelves on the search page  to none.
-     */
-    books.forEach((item) => {
-      if (item.id === book.id) {
-        currentShelf = item.shelf
-      }
-    })
 
     /* Set book cover to none if it is undefined */
     if (bookCover === undefined) {
