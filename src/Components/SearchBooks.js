@@ -39,6 +39,12 @@ class SearchBooks extends Component {
     const { searchBookResults, query } = this.state
     const { books, changeShelf } = this.props
 
+    /* Create a mapping from book id to the shelf the book lives in */
+    let bookIdToShelfMap = {}
+    for (let book of books) {
+      bookIdToShelfMap[book.id] = book.shelf
+    }
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -71,7 +77,7 @@ class SearchBooks extends Component {
               searchBookResults.map((book, index) => (
               <Book
                 book={ book }
-                books={ books }
+                shelf={ bookIdToShelfMap[book.id] }
                 key={ index }
                 changeShelf={ changeShelf }
               />
