@@ -38,7 +38,7 @@ class Book extends Component {
     let bookCover = book.imageLinks
 
     /* Set book cover to none if it is undefined */
-    let backgroundImage = bookCover ? `url(${bookCover.smallThumbnail})` : 'url(no-image2.png)'
+    let backgroundImage = bookCover ? `url(${bookCover.smallThumbnail})` : 'url(no-image.png)'
 
     return (
     /* Show a modal,an extra book's details, when the showBookDetailsModal is true
