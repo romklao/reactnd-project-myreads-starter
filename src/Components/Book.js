@@ -38,9 +38,7 @@ class Book extends Component {
     let bookCover = book.imageLinks
 
     /* Set book cover to none if it is undefined */
-    if (bookCover === undefined) {
-      bookCover = 'none'
-    }
+    let backgroundImage = bookCover ? `url(${bookCover.smallThumbnail})` : 'url(no-image2.png)'
 
     return (
     /* Show a modal,an extra book's details, when the showBookDetailsModal is true
@@ -56,7 +54,7 @@ class Book extends Component {
           <div className="book">
             <div className="book-top">
               <div className="book-cover" style={{ width: 128, height: 193,
-                backgroundImage: `url(${bookCover.smallThumbnail})` }}
+                backgroundImage: backgroundImage }}
                 onClick={() => this.showBookDetails()}>
               </div>
               <div className="book-shelf-changer">
