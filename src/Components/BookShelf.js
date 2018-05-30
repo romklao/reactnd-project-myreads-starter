@@ -15,7 +15,7 @@ function BookShelf(props) {
           {books.map((book, index) => (
             <Book
               book={ book }
-              books={ books }
+              shelf={ book.shelf }
               key={ index }
               changeShelf={ changeShelf }
             />
