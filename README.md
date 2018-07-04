@@ -10,6 +10,10 @@ This project was created to display books in each category. The application allo
 
 ---
 
+## Run Online Project
+
+Click the link following https://pure-eyrie-49430.herokuapp.com/ to see the webpage.
+
 ## Requirements
 * npm
 
