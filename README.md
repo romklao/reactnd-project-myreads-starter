@@ -4,7 +4,7 @@ This project was created to display books in each category. The application allo
 
 ---
 
-<div  align="center" style="text-align:center;background-color:#eaeaea">
+<div  align="center" style="text-align:center;background:#eaeaea;">
 	<img src="public/live-image.png" alt="neighborhood map" height="520px">
 </div>
 
